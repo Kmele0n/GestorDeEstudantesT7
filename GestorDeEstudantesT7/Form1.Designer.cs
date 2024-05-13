@@ -46,6 +46,7 @@
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.Size = new System.Drawing.Size(100, 20);
             this.textBoxSenha.TabIndex = 1;
+            this.textBoxSenha.UseSystemPasswordChar = true;
             // 
             // pictureBoxUsuario
             // 
@@ -56,6 +57,7 @@
             this.pictureBoxUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxUsuario.TabIndex = 2;
             this.pictureBoxUsuario.TabStop = false;
+            this.pictureBoxUsuario.Click += new System.EventHandler(this.pictureBoxUsuario_Click);
             // 
             // label1
             // 
@@ -104,6 +106,7 @@
             this.buttonLogin.TabIndex = 9;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonCancelar
             // 
@@ -114,6 +117,7 @@
             this.buttonCancelar.TabIndex = 10;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // Login_Form
             // 
