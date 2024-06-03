@@ -35,6 +35,7 @@
             // 
             // dataGridViewListaDeAlunos
             // 
+            this.dataGridViewListaDeAlunos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewListaDeAlunos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListaDeAlunos.Location = new System.Drawing.Point(-8, 2);
             this.dataGridViewListaDeAlunos.Name = "dataGridViewListaDeAlunos";
@@ -60,7 +61,6 @@
             this.Controls.Add(this.dataGridViewListaDeAlunos);
             this.Name = "FormListarEstudantes";
             this.Text = "FormListarEstudantes";
-            this.Load += new System.EventHandler(this.buttonAtualizar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaDeAlunos)).EndInit();
             this.ResumeLayout(false);
 

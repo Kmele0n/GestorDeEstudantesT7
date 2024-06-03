@@ -26,7 +26,7 @@ namespace GestorDeEstudantesT7
             dataGridViewListaDeAlunos.ReadOnly = true;
 
             DataGridViewImageColumn colunaDeFotos = new DataGridViewImageColumn();
-            dataGridViewListaDeAlunos.RowTemplate.Height = 80
+            dataGridViewListaDeAlunos.RowTemplate.Height = 80;
 
             dataGridViewListaDeAlunos.DataSource = estudante.getEstudantes(comando);
 
@@ -35,5 +35,14 @@ namespace GestorDeEstudantesT7
 
             dataGridViewListaDeAlunos.AllowUserToAddRows = false;
         }
+    }
+    private void buttonAtualizar_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void dataGridViewListaDeAlunos_DoubleClick(object sender, EventArgs e)
+    {
+
     }
 }
