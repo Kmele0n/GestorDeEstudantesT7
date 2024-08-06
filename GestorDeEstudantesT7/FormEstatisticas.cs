@@ -16,5 +16,47 @@ namespace GestorDeEstudantesT7
         {
             InitializeComponent();
         }
+
+        Color corPainelTotal;
+        Color corPainelMeninos;
+        Color corPainelMeninas;
+
+
+        private void FormEstatisticas_Load(object sender, EventArgs e)
+        {
+            corPainelTotal = panelTotalDeEstudantes.BackColor;
+            corPainelMeninos = panelMeninos.BackColor;
+            corPainelMeninas = panelMeninas.BackColor;
+        }
+
+        private void labelTotalDeEstudantes_Click(object sender, EventArgs e)
+        {
+            panelTotalDeEstudantes.BackColor = Color.Black;
+            labelTotalDeEstudantes.ForeColor = corPainelTotal;
+        }
+
+        private void labelTotalDeEstudantes_MouseLeave(object sender, EventArgs e)
+        {
+            panelTotalDeEstudantes.BackColor = corPainelTotal;
+            labelTotalDeEstudantes.ForeColor = Color.Black;
+        }
+
+        private void labelTotalDeEstudantes_MouseEnter(object sender, EventArgs e)
+        {
+            panelTotalDeEstudantes.BackColor = Color.Black;
+            labelTotalDeEstudantes.ForeColor = corPainelTotal;
+        }
+
+        private void labelMeninos_Click(object sender, EventArgs e)
+        {
+            panelMeninos.BackColor = Color.Black;
+            labelMeninos.ForeColor = corPainelTotal;
+        }
+
+        private void labelMeninas_Click(object sender, EventArgs e)
+        {
+            panelMeninas.BackColor = Color.Black;
+            labelMeninas.ForeColor = corPainelTotal;
+        }
     }
 }

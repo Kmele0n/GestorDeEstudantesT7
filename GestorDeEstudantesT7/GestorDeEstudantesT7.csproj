@@ -93,6 +93,9 @@
     <EmbeddedResource Include="FormAtualizarApagarEstudante.resx">
       <DependentUpon>FormAtualizarApagarEstudante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEstatisticas.resx">
+      <DependentUpon>FormEstatisticas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInserirEstudante.resx">
       <DependentUpon>FormInserirEstudante.cs</DependentUpon>
     </EmbeddedResource>
