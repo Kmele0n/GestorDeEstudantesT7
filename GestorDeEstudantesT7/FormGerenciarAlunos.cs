@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,116 +18,72 @@ namespace GestorDeEstudantesT7
         {
             InitializeComponent();
         }
-        
+
         Estudante estudante = new Estudante();
+
         private void FormGerenciarAlunos_Load(object sender, EventArgs e)
         {
-
+            // Preenche a tabela com os alunos do banco de dados.
+            preencheTabela(new MySqlCommand("SELECT * FROM `estudantes`"));
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        // Metódo que preenche a tabela com os alunos do banco de dados.
+        public void preencheTabela(MySqlCommand comando) 
         {
+            // Impede que os dados exibidos na tabela sejam alterados.
+            dataGridViewListaDeAlunos.ReadOnly = true;
+            // Cria uma coluna para exibir as fotos dos alunos.
+            DataGridViewImageColumn colunaDeFotos = new DataGridViewImageColumn();
+            // Determina uma altura padrão para as linhas da tabela.
+            dataGridViewListaDeAlunos.RowTemplate.Height = 80;
+            // Determina a origem dos dados da tabela.
+            dataGridViewListaDeAlunos.DataSource = estudante.getEstudantes(comando);
+            // Determinar qual SERÁ a coluna com as imagens.
+            colunaDeFotos = (DataGridViewImageColumn)dataGridViewListaDeAlunos.Columns[7];
+            colunaDeFotos.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            // Impede o usuário de incluir linhas.
+            dataGridViewListaDeAlunos.AllowUserToAddRows = false;
 
+            // Mostra o total de alunos
+            labelTotalDeAlunos.Text = "Total de Alunos: " + dataGridViewListaDeAlunos.Rows.Count;
         }
 
-        private void buttonCancelar_Click(object sender, EventArgs e)
+        private void dataGridViewListaDeAlunos_Click(object sender, EventArgs e)
         {
+            textBoxID.Text = dataGridViewListaDeAlunos.CurrentRow.Cells[0].Value.ToString();
+            textBoxNome.Text = dataGridViewListaDeAlunos.CurrentRow.Cells[1].Value.ToString();
+            textBoxSobrenome.Text = dataGridViewListaDeAlunos.CurrentRow.Cells[2].Value.ToString();
 
-        }
+            dateTimePickerNascimento.Value = (DateTime)dataGridViewListaDeAlunos.CurrentRow.Cells[3].Value;
 
-        private void buttonEnviarFoto_Click(object sender, EventArgs e)
-        {
+            if (dataGridViewListaDeAlunos.CurrentRow.Cells[4].Value.ToString() == "Feminino")
+            {
+                radioButtonFeminino.Checked = true;
+            }
+            else
+            {
+                radioButtonMasculino.Checked = true;
+            }
 
-        }
+            textBoxTelefone.Text = dataGridViewListaDeAlunos.CurrentRow.Cells[5].Value.ToString();
+            textBoxEndereco.Text = dataGridViewListaDeAlunos.CurrentRow.Cells[6].Value.ToString();
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxFoto_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxEndereco_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxTelefone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePickerNascimento_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxSobrenome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonCadastrar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonIncluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelTotalDeAlunos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormGerenciarAlunos_Load_1(object sender, EventArgs e)
-        {
-
+            byte[] imagem;
+            imagem = (byte[])dataGridViewListaDeAlunos.CurrentRow.Cells[7].Value;
+            MemoryStream fotoDoAluno = new MemoryStream(imagem);
+            pictureBoxFoto.Image = Image.FromStream(fotoDoAluno);
         }
 
         private void buttonRedefinir_Click(object sender, EventArgs e)
         {
-
+            textBoxID.Text = "";
+            textBoxNome.Text = "";
+            textBoxSobrenome.Text = "";
+            textBoxEndereco.Text = "";
+            textBoxTelefone.Text = "";
+            radioButtonFeminino.Checked = true;
+            dateTimePickerNascimento.Value = DateTime.Now;
+            pictureBoxFoto.Image = null;
         }
     }
 }

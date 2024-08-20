@@ -38,9 +38,9 @@ namespace GestorDeEstudantesT7
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-
             try
             {
+                // Esta linha só existe em "buttonSalvar_Click(...)"
                 int id = Convert.ToInt32(textBoxID.Text);
 
                 string nome = textBoxNome.Text;
@@ -91,12 +91,10 @@ namespace GestorDeEstudantesT7
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch 
+            catch
             {
-                MessageBox.Show("Ocorreu um erro!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // Esta linha só existe em "buttonSalvar_Click(...)"
-            
         }
 
         bool Verificar()
@@ -117,9 +115,9 @@ namespace GestorDeEstudantesT7
 
         private void buttonApagar_Click(object sender, EventArgs e)
         {
-
             try
             {
+                // Referência a ID do aluno.
                 int idDoAluno = Convert.ToInt32(textBoxID.Text);
 
                 // Mostrar uma caixa de diálogo perguntando se o usuário
@@ -150,11 +148,10 @@ namespace GestorDeEstudantesT7
                     }
                 }
             }
-            catch 
+            catch
             {
-                MessageBox.Show("Ocorreu um erro", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         // Variável global do tipo MeuBancoDeDados...
@@ -214,11 +211,6 @@ namespace GestorDeEstudantesT7
             {
                 e.Handled = true;
             }
-        }
-
-        private void FormAtualizarApagarEstudante_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
