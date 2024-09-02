@@ -74,7 +74,6 @@
             this.buttonIncluir.TabIndex = 35;
             this.buttonIncluir.Text = "Incluir";
             this.buttonIncluir.UseVisualStyleBackColor = true;
-            this.buttonIncluir.Click += new System.EventHandler(this.buttonIncluir_Click);
             // 
             // buttonSalvar
             // 

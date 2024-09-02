@@ -112,8 +112,8 @@ namespace GestorDeEstudantesT7
                 MessageBox.Show("Não tem foto para baixar.");
             }
             else
-            if (salvarArquivo.ShowDialog() == DialogResult.OK)
             {
+                salvarArquivo.ShowDialog();
                 pictureBoxFoto.Image.Save(salvarArquivo.FileName + ("." +
                     ImageFormat.Jpeg.ToString()));
             }
@@ -127,7 +127,7 @@ namespace GestorDeEstudantesT7
             preencheTabela(comando);
         }
 
-        private void buttonIncluir_Click(object sender, EventArgs e)
+        private void buttonAtualizar_Click(object sender, EventArgs e)
         {
 
         }
@@ -153,6 +153,7 @@ namespace GestorDeEstudantesT7
 
                 MemoryStream foto = new MemoryStream();
 
+
                 // Verificar se o aluno tem entre 10 e 100 anos.
                 int anoDeNascimento = dateTimePickerNascimento.Value.Year;
                 int anoAtual = DateTime.Now.Year;
@@ -173,8 +174,6 @@ namespace GestorDeEstudantesT7
                     {
                         MessageBox.Show("Dados salvos!", "Sucesso!",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // Preenche a tabela com os alunos do banco de dados.
-                        preencheTabela(new MySqlCommand("SELECT * FROM `estudantes`"));
                     }
                     else
                     {
@@ -221,9 +220,6 @@ namespace GestorDeEstudantesT7
                         textBoxEndereco.Text = "";
                         dateTimePickerNascimento.Value = DateTime.Now;
                         pictureBoxFoto.Image = null;
-
-                        // Preenche a tabela com os alunos do banco de dados.
-                        preencheTabela(new MySqlCommand("SELECT * FROM `estudantes`"));
                     }
                     else
                     {
@@ -238,12 +234,6 @@ namespace GestorDeEstudantesT7
                 MessageBox.Show("Ocorreu um erro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void buttonAtualizar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         bool Verificar()
         { // método Verificar() começa aqui
             if ((textBoxNome.Text.Trim() == "") ||
@@ -259,5 +249,5 @@ namespace GestorDeEstudantesT7
                 return true;
             }
         } // e termina aqui.
-    } // fim da classe
-} // fim do namespace
+    }
+}
