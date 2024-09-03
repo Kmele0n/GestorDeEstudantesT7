@@ -57,5 +57,10 @@ namespace GestorDeEstudantesT7
             FormImprimirAlunos formImprimirAlunos = new FormImprimirAlunos();
             formImprimirAlunos.Show();
         }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

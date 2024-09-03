@@ -18,7 +18,7 @@ namespace GestorDeEstudantesT7
         public bool inserirEstudante(string nome, string sobrenome, DateTime nascimento, 
             string telefone, string genero, string endereco, MemoryStream foto)
         {
-            // Removido `id` da lista de parâmetros a serem alterados.
+           
             MySqlCommand comando = new MySqlCommand("INSERT INTO `estudantes`(`nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereco`, `foto`) VALUES (@nome,@sobrenome,@nascimento,@genero,@telefone,@endereco,@foto)", meuBancoDeDados.getConexao);
 
             comando.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
@@ -27,7 +27,7 @@ namespace GestorDeEstudantesT7
             comando.Parameters.Add("@genero", MySqlDbType.VarChar).Value = genero;
             comando.Parameters.Add("@telefone", MySqlDbType.VarChar).Value = telefone;
             comando.Parameters.Add("@endereco", MySqlDbType.Text).Value = endereco;
-            // Incluído o método ToArray() em foto.
+            
             comando.Parameters.Add("@foto", MySqlDbType.LongBlob).Value = foto.ToArray();
 
             meuBancoDeDados.abrirConexao();
@@ -44,7 +44,7 @@ namespace GestorDeEstudantesT7
             }
         }
 
-        // RETORNA a tabela dos estudantes que estão no banco de dados.
+      
         public DataTable getEstudantes(MySqlCommand comando)
         {
             comando.Connection = meuBancoDeDados.getConexao;
@@ -59,7 +59,7 @@ namespace GestorDeEstudantesT7
         public bool atualizarEstudantes(int id, string nome, string sobrenome, DateTime nascimento,
             string telefone, string genero, string endereco, MemoryStream foto)
         {
-            // Removido `id` da lista de parâmetros a serem alterados.
+           
             MySqlCommand comando = new MySqlCommand("UPDATE `estudantes` SET `nome`=@nome,`sobrenome`=@sobrenome,`nascimento`=@nascimento,`genero`=@genero,`telefone`=@telefone,`endereco`=@endereco,`foto`=@foto WHERE `id`=@id", meuBancoDeDados.getConexao);
 
             comando.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
@@ -69,7 +69,7 @@ namespace GestorDeEstudantesT7
             comando.Parameters.Add("@genero", MySqlDbType.VarChar).Value = genero;
             comando.Parameters.Add("@telefone", MySqlDbType.VarChar).Value = telefone;
             comando.Parameters.Add("@endereco", MySqlDbType.Text).Value = endereco;
-            // Incluído o método ToArray() em foto.
+         
             comando.Parameters.Add("@foto", MySqlDbType.LongBlob).Value = foto.ToArray();
 
             meuBancoDeDados.abrirConexao();
@@ -86,7 +86,7 @@ namespace GestorDeEstudantesT7
             }
         }
 
-        // Apaga um estudante com base em seu ID.
+        
         public bool apagarEstudante(int id)
         {
             try
@@ -115,7 +115,7 @@ namespace GestorDeEstudantesT7
 
         }
 
-        // Função que faz a contagem de alunos.
+       
         public string fazerContagem(string pesquisa)
         {
             MySqlCommand comando = 
@@ -130,7 +130,7 @@ namespace GestorDeEstudantesT7
             return contagem;
         }
 
-        // pega o total de estudantes.
+       
         public string totalDeEstudantes()
         {
             return fazerContagem("SELECT COUNT(*) FROM `estudantes`");

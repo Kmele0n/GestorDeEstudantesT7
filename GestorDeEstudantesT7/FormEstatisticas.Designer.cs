@@ -41,12 +41,13 @@
             // 
             // panelTotalDeEstudantes
             // 
-            this.panelTotalDeEstudantes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panelTotalDeEstudantes.BackColor = System.Drawing.Color.DarkSlateGray;
             this.panelTotalDeEstudantes.Controls.Add(this.labelTotalDeEstudantes);
             this.panelTotalDeEstudantes.Location = new System.Drawing.Point(12, 12);
             this.panelTotalDeEstudantes.Name = "panelTotalDeEstudantes";
             this.panelTotalDeEstudantes.Size = new System.Drawing.Size(708, 204);
             this.panelTotalDeEstudantes.TabIndex = 0;
+            this.panelTotalDeEstudantes.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTotalDeEstudantes_Paint);
             // 
             // labelTotalDeEstudantes
             // 
@@ -66,7 +67,7 @@
             // 
             // panelMeninos
             // 
-            this.panelMeninos.BackColor = System.Drawing.Color.Yellow;
+            this.panelMeninos.BackColor = System.Drawing.Color.Navy;
             this.panelMeninos.Controls.Add(this.labelMeninos);
             this.panelMeninos.Location = new System.Drawing.Point(12, 222);
             this.panelMeninos.Name = "panelMeninos";
@@ -91,7 +92,7 @@
             // 
             // panelMeninas
             // 
-            this.panelMeninas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panelMeninas.BackColor = System.Drawing.Color.Fuchsia;
             this.panelMeninas.Controls.Add(this.labelMeninas);
             this.panelMeninas.Location = new System.Drawing.Point(369, 222);
             this.panelMeninas.Name = "panelMeninas";

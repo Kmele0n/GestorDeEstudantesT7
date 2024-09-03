@@ -19,13 +19,12 @@ namespace GestorDeEstudantesT7
             InitializeComponent();
         }
 
-        // Variável global do tipo Estudante, ou instância de um
-        // objeto do tipo Estudante, chamado "estudante".
+      
         Estudante estudante = new Estudante();
 
         private void buttonEnviarFoto_Click(object sender, EventArgs e)
         {
-            // Abre janela para pesquisar a imagem no computador.
+            
             OpenFileDialog procurarFoto = new OpenFileDialog();
 
             procurarFoto.Filter = "Selecione a foto (*.jpg;*.png;*.jpeg;*.gif)|*.jpg;*.png;*.jpeg;*.gif";
@@ -40,7 +39,10 @@ namespace GestorDeEstudantesT7
         {
             try
             {
-                // Esta linha só existe em "buttonSalvar_Click(...)"
+               
+
+
+
                 int id = Convert.ToInt32(textBoxID.Text);
 
                 string nome = textBoxNome.Text;
@@ -57,7 +59,7 @@ namespace GestorDeEstudantesT7
 
                 MemoryStream foto = new MemoryStream();
 
-                // Verificar se o aluno tem entre 10 e 100 anos.
+               
                 int anoDeNascimento = dateTimePickerNascimento.Value.Year;
                 int anoAtual = DateTime.Now.Year;
 
@@ -117,11 +119,10 @@ namespace GestorDeEstudantesT7
         {
             try
             {
-                // Referência a ID do aluno.
+              
                 int idDoAluno = Convert.ToInt32(textBoxID.Text);
 
-                // Mostrar uma caixa de diálogo perguntando se o usuário
-                // tem certeza de que quer apagar o aluno.
+               
                 if (MessageBox.Show("Tem certeza que deseja apagar o aluno?",
                     "Apagar Estudante", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
@@ -132,7 +133,7 @@ namespace GestorDeEstudantesT7
                             "Apagar Estudante", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
-                        // Limpa as caixas de texto.
+                       
                         textBoxID.Text = "";
                         textBoxNome.Text = "";
                         textBoxTelefone.Text = "";
@@ -154,14 +155,14 @@ namespace GestorDeEstudantesT7
             }
         }
 
-        // Variável global do tipo MeuBancoDeDados...
+       
         MeuBancoDeDados meuBancoDeDados = new MeuBancoDeDados();
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
            try
            {
-                // Converte o ID da caixa de texto para número inteiro.
+                
                 int idDoAluno = Convert.ToInt32(textBoxID.Text);
 
                 MySqlCommand comando = new MySqlCommand("SELECT `id`, `nome`, `sobrenome`, `nascimento`, `genero`, `telefone`, `endereco`, `foto` FROM `estudantes` WHERE `id`=@idDoAluno", meuBancoDeDados.getConexao);
@@ -171,7 +172,7 @@ namespace GestorDeEstudantesT7
 
                 if (tabela.Rows.Count > 0)
                 {
-                    // Rows[número da linha][título da coluna]. A primeira coluna é sempre a 0.
+                   
                     textBoxID.Text = tabela.Rows[0]["id"].ToString();
                     textBoxNome.Text = tabela.Rows[0]["nome"].ToString();
                     textBoxSobrenome.Text = tabela.Rows[0]["sobrenome"].ToString();
@@ -193,7 +194,7 @@ namespace GestorDeEstudantesT7
                     MemoryStream fotoStream = new MemoryStream(foto);
                     pictureBoxFoto.Image = Image.FromStream(fotoStream);
                 }
-            } catch // Exibe uma mensagem de erro caso o usuário não digite a ID.
+            } catch 
             {
                 MessageBox.Show("Digite uma ID válida!", "ID Inválida", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
@@ -206,11 +207,16 @@ namespace GestorDeEstudantesT7
 
         private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Impede que o usuário digite letras na caixa de texto de ID.
+            
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+        }
+
+        private void FormAtualizarApagarEstudante_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
